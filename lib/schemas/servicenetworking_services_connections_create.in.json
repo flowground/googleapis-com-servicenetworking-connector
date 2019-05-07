@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "properties": {
+        "parent": {
+            "required": true,
+            "type": "string"
+        },
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents a private connection resource. A private connection is implemented\nas a VPC Network Peering connection between a service producer's VPC network\nand a service consumer's VPC network.",
+            "properties": {
+                "network": {
+                    "description": "The name of service consumer's VPC network that's connected with service\nproducer network, in the following format:\n`projects/{project}/global/networks/{network}`.\n`{project}` is a project number, such as in `12345` that includes\nthe VPC service consumer's VPC network. `{network}` is the name of the\nservice consumer's VPC network.",
+                    "type": "string"
+                },
+                "peering": {
+                    "description": "Output only.\nThe name of the VPC Network Peering connection that was created by the\nservice producer.",
+                    "type": "string"
+                },
+                "reservedPeeringRanges": {
+                    "description": "The name of one or more allocated IP address ranges for this service\nproducer of type `PEERING`.\nNote that invoking this method with a different range when connection is\nalready established will not modify already provisioned service\nproducer subnetworks.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "service": {
+                    "description": "Output only.\nThe name of the peering service that's associated with this connection, in\nthe following format: `services/{service name}`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "type": "object",
+    "properties": {
+        "parent": {
+            "required": true,
+            "type": "string"
+        },
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request to create a subnetwork in a previously peered service network.",
+            "properties": {
+                "consumer": {
+                    "description": "Required. A resource that represents the service consumer, such as\n`projects/123456`. The project number can be different from the\nvalue in the consumer network parameter. For example, the network might be\npart of a Shared VPC network. In those cases, Service Networking validates\nthat this resource belongs to that Shared VPC.",
+                    "type": "string"
+                },
+                "consumerNetwork": {
+                    "description": "Required. The name of the service consumer's VPC network. The network\nmust have an existing private connection that was provisioned through the\nconnections.create method. The name must be in the following format:\n`projects/{project}/global/networks/{network}`, where {project}\nis a project number, such as `12345`. {network} is the name of a\nVPC network in the project.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional description of the subnet.",
+                    "type": "string"
+                },
+                "ipPrefixLength": {
+                    "description": "Required. The prefix length of the subnet's IP address range.  Use CIDR\nrange notation, such as `30` to provision a subnet with an\n`x.x.x.x/30` CIDR range. The IP address range is drawn from a\npool of available ranges in the service consumer's allocated range.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "region": {
+                    "description": "Required. The name of a [region](/compute/docs/regions-zones)\nfor the subnet, such `europe-west1`.",
+                    "type": "string"
+                },
+                "requestedAddress": {
+                    "description": "Optional. The starting address of a range. The address must be a valid\nIPv4 address in the x.x.x.x format. This value combined with the IP prefix\nrange is the CIDR range for the subnet. The range must be within the\nallocated range that is assigned to the private connection. If the CIDR\nrange isn't available, the call fails.",
+                    "type": "string"
+                },
+                "subnetwork": {
+                    "description": "Required. A name for the new subnet. For information about the naming\nrequirements, see [subnetwork](/compute/docs/reference/rest/v1/subnetworks)\nin the Compute API documentation.",
+                    "type": "string"
+                },
+                "subnetworkUsers": {
+                    "description": "A list of members that are granted the `compute.networkUser`\nrole on the subnet.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
